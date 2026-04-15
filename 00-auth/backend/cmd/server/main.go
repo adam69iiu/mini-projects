@@ -1,22 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"log"
 
-	"github.com/go-chi/chi/v5"
+	"github.com/adam69iiu/backend/internal/server"
 )
 
 
-func Health(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("this is amazing"))
-}
-func main()  {
-	r := chi.NewRouter()
-	r.Get("/health", Health)
-	fmt.Println("giga niga")
-	fmt.Println("http://localhost:6767")
- if err := http.ListenAndServe(":6767",r); err !=nil{
-	 fmt.Println("port is reseved")
+
+func main(){
+ if err :=  server.Run(); err != nil{
+	 log.Fatalf(" running server failed: %v",err)
  }
 }
